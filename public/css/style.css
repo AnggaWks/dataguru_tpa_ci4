@@ -1,0 +1,7 @@
+.foto {
+  width: 50px;
+}
+
+.table > tbody > tr > * {
+  vertical-align: middle;
+}
