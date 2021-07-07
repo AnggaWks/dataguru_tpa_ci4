@@ -3,12 +3,23 @@
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="row">
+        <div class="col-6">
+            <h1 class="mt-2">DATA SANTRI TK/TPA AL-MUHAJIRIN Unit 449 </h1>
+            <h3>TAHUN PEMBELAJARAN 2021</h3>
+            <form action="" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Masukkan keyword pencarian..." aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword">
+                    <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                </div>
+        </div>
+        </form>
+    </div>
+    <div class="row">
         <div class="col">
             <a href="/santri/create" class="btn btn-primary mt-3">Tambah Data Santri</a>
             <br></br>
             <a href="/cetak.php" target="_blank">Cetak></a>
-            <h1 class="mt-2">DATA SANTRI TK/TPA AL-MUHAJIRIN Unit 449 </h1>
-            <h3>TAHUN PEMBELAJARAN 2021</h3>
+
             <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-success" role="alert">
                     <?= session()->getFlashdata('pesan'); ?>
@@ -29,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $i = 1 + (10 * ($currentPage - 1)); ?>
                     <?php foreach ($santri as $s) : ?>
                         <tr>
                             <th scope="row"><?= $i++; ?></th>
@@ -48,6 +59,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?= $pager->links('tbsantri', 'santri_pagination'); ?>
         </div>
     </div>
 </div>

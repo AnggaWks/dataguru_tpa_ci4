@@ -14,9 +14,20 @@ class Santri extends BaseController
     public function index()
     {
         // $santri = $this->santriModel->findAll();
+        $currentPage = $this->request->getVar('page_tbsantri') ? $this->request->getVar('page_tbsantri') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $santri = $this->santriModel->search($keyword);
+        } else {
+            $santri = $this->santriModel;
+        }
         $data = [
             'title' => 'Data Santri TPA',
-            'santri' => $this->santriModel->getSantri()
+            // 'santri' => $this->santriModel->findAll()
+            'santri' => $santri->paginate(10, 'tbsantri'),
+            'pager' => $this->santriModel->pager,
+            'currentPage' => $currentPage
         ];
 
         // santriModel = new \App\Models\SantriModel();

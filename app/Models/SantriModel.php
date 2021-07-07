@@ -10,12 +10,21 @@ class SantriModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = ['nama_santri', 'slug', 'alamat', 'nama_orangtua', 'infaq_wajib', 'realisasi', 'minus', 'keterangan', 'foto'];
 
-    public function getSantri($slug = false)
+    public function search($keyword)
     {
-        if ($slug == false) {
-            return $this->findAll();
-        }
+        //         $builder=$this->table('tbsantri');
+        //         $builder=like->('nama_santri',$keyword);
+        //  return $builder;
 
-        return $this->where(['slug' => $slug])->first();
+        return $this->table('tbsantri')->like('nama_santri', $keyword);
     }
 }
+//     public function getSantri($slug = false)
+//     {
+//         if ($slug == false) {
+//             return $this->findAll();
+//         }
+
+//         return $this->where(['slug' => $slug])->first();
+//     }
+// }
