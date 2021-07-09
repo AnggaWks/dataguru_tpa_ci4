@@ -18,7 +18,7 @@
         <div class="col">
             <a href="/santri/create" class="btn btn-primary mt-3">Tambah Data Santri</a>
             <br></br>
-            <a href="/cetak.php" target="_blank">Cetak></a>
+            <!-- <a href="/cetak.php" target="_blank">Cetak></a> -->
 
             <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-success" role="alert">
